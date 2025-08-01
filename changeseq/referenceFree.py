@@ -38,7 +38,7 @@ def analyze(fastq1_filename, fastq2_filename, targetsite, out_base, name='', cel
 
     fastq1_file = fq(fastq1_filename)
     fastq2_file = fq(fastq2_filename)
-    for r1, r2 in itertools.izip(fastq1_file, fastq2_file):
+    for r1, r2 in zip(fastq1_file, fastq2_file):
         r1_sequence = r1[1].rstrip('\n')
         r2_sequence = r2[1].rstrip('\n')
         joined_seq = reverseComplement(r1_sequence) + r2_sequence
@@ -74,7 +74,7 @@ def join_write_output(fastq1_filename, fastq2_filename, out):
     fastq2_file = fq(fastq2_filename)
 
     with open(out, 'w') as o:
-        for r1, r2 in itertools.izip(fastq1_file, fastq2_file):
+        for r1, r2 in zip(fastq1_file, fastq2_file):
             header = '>{0}'.format(r1[0])
             r1_sequence = r1[1].rstrip('\n')
             r2_sequence = r2[1].rstrip('\n')
